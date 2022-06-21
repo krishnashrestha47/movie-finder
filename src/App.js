@@ -1,6 +1,7 @@
 import { Container } from "react-bootstrap";
 import "./App.css";
 import { CustomCard } from "./components/CustomCard";
+import { MovieList } from "./components/MovieList";
 import { SearchForm } from "./components/SearchForm";
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
           <CustomCard />
         </div>
         <hr />
-        <div>movie listing area</div>
+        <MovieList />
       </Container>
     </div>
   );
