@@ -22,10 +22,6 @@ export const MovieList = () => {
       <Row className="mt-5">
         <Col className="d-flex flex-wrap justify-content-between">
           <CustomCard />
-          <CustomCard />
-          <CustomCard />
-          <CustomCard />
-          <CustomCard />
         </Col>
       </Row>
     </div>
