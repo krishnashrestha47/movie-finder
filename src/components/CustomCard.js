@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 
-export const CustomCard = () => {
+export const CustomCard = ({ movie }) => {
   return (
     <Card style={{ width: "18rem" }} className="mt-3">
       <Card.Img variant="top" src="holder.js/100px180" />
