@@ -4,7 +4,10 @@ import { Button, Card } from "react-bootstrap";
 export const CustomList = ({ movie = {}, func, inSearchForm }) => {
   const { Title, Poster, imdbRating } = movie;
   return (
-    <Card style={{ width: "18rem" }} className="mt-3">
+    <Card
+      style={{ width: "100%" }}
+      className="mt-3 d-flex flex-row justify-content-between"
+    >
       <Card.Img variant="top" src={Poster} />
       <Card.Body>
         <Card.Title>{Title}</Card.Title>
