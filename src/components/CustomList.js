@@ -2,16 +2,21 @@ import React from "react";
 import { Button, Card } from "react-bootstrap";
 
 export const CustomList = ({ movie = {}, func, inSearchForm }) => {
-  const { Title, Poster, imdbRating } = movie;
+  const { Title, Poster, imdbRating, Plot } = movie;
   return (
     <Card
       style={{ width: "100%" }}
       className="mt-3 d-flex flex-row justify-content-between"
     >
-      <Card.Img variant="top" src={Poster} />
+      {/* <div style={{ width: "150px" }}>
+      </div> */}
+      <Card.Img variant="top" src={Poster} style={{ width: "150px" }} />
       <Card.Body>
-        <Card.Title>{Title}</Card.Title>
-        <Card.Title>Rating: {imdbRating}</Card.Title>
+        <Card.Title>{Title.toUpperCase()}</Card.Title>
+        <Card.Title>
+          Rating : <kbr> {imdbRating}</kbr>
+        </Card.Title>
+        <div>{Plot}</div>
 
         {inSearchForm ? (
           <div className="d-flex justify-content-between mt-2">
@@ -29,7 +34,7 @@ export const CustomList = ({ movie = {}, func, inSearchForm }) => {
             </Button>
           </div>
         ) : (
-          <div className="d-grid gap-2">
+          <div className="text-end">
             <Button
               variant="danger"
               size="lg"
