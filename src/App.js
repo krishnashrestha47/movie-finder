@@ -27,7 +27,9 @@ const App = () => {
       <Container>
         <SearchForm handleOnSubmit={handleOnSubmit} />
         <div className="mt-4 d-flex justify-content-center">
-          {movie.imdbID && <CustomCard movie={movie} func={movieSelect} />}
+          {movie.imdbID && (
+            <CustomCard movie={movie} func={movieSelect} inSearchForm={true} />
+          )}
           {showErr && <Alert variant="danger">{showErr}</Alert>}
         </div>
         <hr />
