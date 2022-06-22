@@ -9,24 +9,29 @@ import { fetchMovieInfo } from "./helpers/axiosHelper";
 const App = () => {
   const [movie, setMovie] = useState({});
   const [showErr, setShowErr] = useState("");
+  const [movieList, setMovieList] = useState([]);
 
   const handleOnSubmit = async (str) => {
     const { data } = await fetchMovieInfo(str);
     setMovie(data);
     data.Response === "False" ? setShowErr(data.Error) : setShowErr("");
   };
-  console.log(movie);
 
+  const movieSelect = (movie) => {
+    setMovieList([...movieList, movie]);
+    setMovie({});
+  };
+  console.log(movieList);
   return (
     <div className="wrapper">
       <Container>
         <SearchForm handleOnSubmit={handleOnSubmit} />
         <div className="mt-4 d-flex justify-content-center">
-          {movie.imdbID && <CustomCard movie={movie} />}
+          {movie.imdbID && <CustomCard movie={movie} func={movieSelect} />}
           {showErr && <Alert variant="danger">{showErr}</Alert>}
         </div>
         <hr />
-        <MovieList /> :
+        <MovieList movieList={movieList} />
       </Container>
     </div>
   );

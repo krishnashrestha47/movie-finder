@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, ButtonGroup, Button } from "react-bootstrap";
 import { CustomCard } from "./CustomCard";
 
-export const MovieList = () => {
+export const MovieList = ({ movieList }) => {
+  const [displayList, setDisplayList] = useState([]);
+
+  useEffect(() => {
+    setDisplayList(movieList);
+  }, []);
+
+  const filterMovie = (mood) => {
+    if (mood === "all") {
+      return setDisplayList(movieList);
+    }
+    const tempArg = movieList.filter((item) => item.mood === mood);
+    setDisplayList(tempArg);
+  };
+
   return (
     <div>
       <Row>
         <Col className="d-flex justify-content-between">
           <ButtonGroup aria-label="Basic example">
-            <Button variant="primary">All</Button>
-            <Button variant="danger">Action</Button>
-            <Button variant="success">Romantic</Button>
+            <Button variant="primary" onClick={() => filterMovie("all")}>
+              All
+            </Button>
+            <Button variant="danger" onClick={() => filterMovie("action")}>
+              Action
+            </Button>
+            <Button variant="success" onClick={() => filterMovie("romantic")}>
+              Romantic
+            </Button>
           </ButtonGroup>
           <ButtonGroup aria-label="Basic example">
             <Button variant="info">Grid</Button>
@@ -21,7 +41,9 @@ export const MovieList = () => {
 
       <Row className="mt-5">
         <Col className="d-flex flex-wrap justify-content-between">
-          <CustomCard />
+          {displayList.map((item, i) => (
+            <CustomCard movie={item} />
+          ))}
         </Col>
       </Row>
     </div>
