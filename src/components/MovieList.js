@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, ButtonGroup, Button } from "react-bootstrap";
 import { CustomCard } from "./CustomCard";
 
-export const MovieList = ({ movieList }) => {
+export const MovieList = ({ movieList, deleteMovie }) => {
   const [displayList, setDisplayList] = useState([]);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export const MovieList = ({ movieList }) => {
         </div>
         <Col className="d-flex flex-wrap justify-content-between">
           {displayList.map((item, i) => (
-            <CustomCard movie={item} />
+            <CustomCard movie={item} func={deleteMovie} />
           ))}
         </Col>
       </Row>

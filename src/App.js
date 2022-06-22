@@ -21,7 +21,14 @@ const App = () => {
     setMovieList([...movieList, movie]);
     setMovie({});
   };
-  console.log(movieList);
+
+  const deleteMovie = (imdbID) => {
+    if (window.confirm("Are you sure you want to delete the movie?")) {
+      const filteredArg = movieList.filter((item) => item.imdbID !== imdbID);
+      setMovieList(filteredArg);
+    }
+  };
+
   return (
     <div className="wrapper">
       <Container>
@@ -33,7 +40,7 @@ const App = () => {
           {showErr && <Alert variant="danger">{showErr}</Alert>}
         </div>
         <hr />
-        <MovieList movieList={movieList} />
+        <MovieList movieList={movieList} deleteMovie={deleteMovie} />
       </Container>
     </div>
   );

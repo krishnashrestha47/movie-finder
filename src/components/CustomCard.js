@@ -26,8 +26,12 @@ export const CustomCard = ({ movie = {}, func, inSearchForm }) => {
             </Button>
           </div>
         ) : (
-          <div>
-            <Button variant="danger" size="lg">
+          <div className="d-grid gap-2">
+            <Button
+              variant="danger"
+              size="lg"
+              onClick={() => func(movie.imdbID)}
+            >
               Delete Movie
             </Button>
           </div>
