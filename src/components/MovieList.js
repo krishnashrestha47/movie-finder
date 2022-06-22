@@ -7,7 +7,7 @@ export const MovieList = ({ movieList }) => {
 
   useEffect(() => {
     setDisplayList(movieList);
-  }, []);
+  }, [movieList]);
 
   const filterMovie = (mood) => {
     if (mood === "all") {
@@ -40,6 +40,11 @@ export const MovieList = ({ movieList }) => {
       </Row>
 
       <Row className="mt-5">
+        <div>
+          {displayList.length > 1
+            ? displayList.length + " movies found !"
+            : displayList.length + " movie found !"}
+        </div>
         <Col className="d-flex flex-wrap justify-content-between">
           {displayList.map((item, i) => (
             <CustomCard movie={item} />
